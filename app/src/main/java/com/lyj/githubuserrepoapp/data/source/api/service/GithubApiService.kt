@@ -2,7 +2,7 @@ package com.lyj.githubuserrepoapp.data.source.api.service
 
 import com.google.gson.annotations.SerializedName
 import com.lyj.githubuserrepoapp.data.source.api.entity.repository.RepositoryListResponse
-import com.lyj.githubuserrepoapp.data.source.api.entity.user.UserListResponse
+import com.lyj.githubuserrepoapp.data.source.api.entity.user.UserResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -14,14 +14,14 @@ interface GithubApiService{
         const val DEFAULT_PER_PAGE = 30
     }
 
-    @GET("search/users")
+    @GET("users/{userName}")
     fun requestSearchUser(
-        @Query("q") q : String,
+        @Query("userName") userName: String,
         @Query("page") page : Int = 1,
         @Query("per_page") perPage : Int = DEFAULT_PER_PAGE,
         @Query("order") order: Order = Order.ASC,
         @Query("sort") sort: UserSort = UserSort.BEST_MATCH,
-    ) : Single<UserListResponse.Response>
+    ) : Single<UserResponse>
 
     @GET("users/{userName}/repos")
     fun requestRepositoryListByUserName(

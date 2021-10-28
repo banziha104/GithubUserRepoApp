@@ -10,5 +10,5 @@ interface GithubRepositoryModel : GithubModel{
 
 interface GithubUserModel : GithubModel {
     val imageUrl : String?
-    val name : String?
+    val userName : String?
 }
