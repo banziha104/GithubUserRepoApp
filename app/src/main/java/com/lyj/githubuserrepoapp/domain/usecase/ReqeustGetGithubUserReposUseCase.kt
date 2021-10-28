@@ -13,7 +13,9 @@ class RequestGetGithubUserRepoUseCase @Inject constructor(
 ) {
     fun execute(userName : String): Single<List<GithubModel>> = Single.zip(
         repository.requestGetUserList(userName),
-        repository.requestGetRepositoryList(userName)
+        repository.requestGetRepositoryList(userName).map { list ->
+            list.sortedByDescending { it.starCount }
+        }
     ){ user, repos ->
         mutableListOf<GithubModel>(user).apply {
             addAll(repos)
