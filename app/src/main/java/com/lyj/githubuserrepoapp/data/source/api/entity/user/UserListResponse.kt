@@ -1,7 +1,7 @@
-package com.lyj.spoqaapp.data.source.network.entity.user
+package com.lyj.githubuserrepoapp.data.source.api.entity.user
 
 import com.google.gson.annotations.SerializedName
-import com.lyj.spoqaapp.domain.model.GithubUserModel
+import com.lyj.githubuserrepoapp.domain.model.GithubUserModel
 
 class UserListResponse {
 	data class Response(
@@ -52,7 +52,7 @@ class UserListResponse {
 		val receivedEventsUrl: String? = null,
 
 		@field:SerializedName("avatar_url")
-		override val avatarUrl: String? = null,
+		val avatarUrl: String? = null,
 
 		@field:SerializedName("events_url")
 		val eventsUrl: String? = null,
@@ -75,10 +75,9 @@ class UserListResponse {
 		@field:SerializedName("organizations_url")
 		val organizationsUrl: String? = null,
 	) : GithubUserModel{
-		override val userName: String?
+		override val name: String?
 			get() = login
-
-		override val compareId: Long?
-			get() = id
+		override val imageUrl: String?
+			get() = avatarUrl
 	}
 }

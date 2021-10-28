@@ -1,9 +1,7 @@
-package com.lyj.spoqaapp.data.source.network.entity.repository
+package com.lyj.githubuserrepoapp.data.source.api.entity.repository
 
 import com.google.gson.annotations.SerializedName
-import com.lyj.spoqaapp.domain.model.GithubRepositoryDetailModel
-import com.lyj.spoqaapp.domain.model.GithubRepositoryModel
-import com.lyj.spoqaapp.domain.model.GithubRepositoryOwnerModel
+import com.lyj.githubuserrepoapp.domain.model.GithubRepositoryModel
 
 class RepositoryListResponse {
     data class License(
@@ -30,7 +28,7 @@ class RepositoryListResponse {
         val allowForking: Boolean? = null,
 
         @field:SerializedName("stargazers_count")
-        override val stargazersCount: Int? = null,
+        val stargazersCount: Int? = null,
 
         @field:SerializedName("pushed_at")
         val pushedAt: String? = null,
@@ -177,7 +175,7 @@ class RepositoryListResponse {
         val hasPages: Boolean? = null,
 
         @field:SerializedName("owner")
-        override val owner: Owner? = null,
+        val owner: Owner? = null,
 
         @field:SerializedName("commits_url")
         val commitsUrl: String? = null,
@@ -237,7 +235,7 @@ class RepositoryListResponse {
         val openIssues: Int? = null,
 
         @field:SerializedName("watchers_count")
-        override val watchersCount: Int? = null,
+        val watchersCount: Int? = null,
 
         @field:SerializedName("node_id")
         val nodeId: String? = null,
@@ -246,13 +244,13 @@ class RepositoryListResponse {
         val homepage: Any? = null,
 
         @field:SerializedName("forks_count")
-        override val forksCount: Int? = null,
-        ) : GithubRepositoryModel,
-        GithubRepositoryDetailModel.RepositoryModel{
-        override val repositoryName: String?
+        val forksCount: Int? = null,
+        ) : GithubRepositoryModel{
+        override val repoName: String?
             get() = name
-        override val compareId: String?
-            get() = id?.toString()
+        override val starCount: Int?
+            get() = stargazersCount
+
     }
 
     data class Owner(
@@ -310,14 +308,5 @@ class RepositoryListResponse {
 
         @field:SerializedName("organizations_url")
         val organizationsUrl: String? = null,
-    ) : GithubRepositoryOwnerModel, GithubRepositoryDetailModel.OwnerModel {
-        override val ownerName: String?
-            get() = login
-        override val ownerAvatarUrl: String?
-            get() = avatarUrl
-
-        override val compareId: String?
-            get() = id?.toString()
-    }
-
+    )
 }
