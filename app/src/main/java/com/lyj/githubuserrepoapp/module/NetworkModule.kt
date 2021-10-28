@@ -7,6 +7,7 @@ import com.lyj.githubuserrepoapp.data.source.GithubApiGenerator
 import com.lyj.githubuserrepoapp.data.source.ServiceGenerator
 import com.lyj.githubuserrepoapp.data.source.api.interceptor.GithubHeaderInterceptor
 import com.lyj.githubuserrepoapp.data.source.api.interceptor.NetworkConnectionInterceptor
+import com.lyj.githubuserrepoapp.data.source.api.service.GithubApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -63,4 +64,10 @@ class NetworkModule {
         callAdapter: CallAdapter.Factory,
         converter: Converter.Factory
     ): ServiceGenerator = GithubApiGenerator(client, callAdapter, converter)
+
+    @Provides
+    @Singleton
+    fun provide(
+        serviceGenerator: ServiceGenerator
+    ): GithubApiService = serviceGenerator.generateService(GithubApiService::class.java)
 }

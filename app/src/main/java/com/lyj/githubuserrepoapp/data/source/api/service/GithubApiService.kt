@@ -16,11 +16,7 @@ interface GithubApiService{
 
     @GET("users/{userName}")
     fun requestSearchUser(
-        @Query("userName") userName: String,
-        @Query("page") page : Int = 1,
-        @Query("per_page") perPage : Int = DEFAULT_PER_PAGE,
-        @Query("order") order: Order = Order.ASC,
-        @Query("sort") sort: UserSort = UserSort.BEST_MATCH,
+        @Path("userName") userName: String,
     ) : Single<UserResponse>
 
     @GET("users/{userName}/repos")
