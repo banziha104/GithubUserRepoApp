@@ -1,4 +1,4 @@
-package com.lyj.spoqaapp.action
+package com.lyj.githubuserrepoapp.action
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
