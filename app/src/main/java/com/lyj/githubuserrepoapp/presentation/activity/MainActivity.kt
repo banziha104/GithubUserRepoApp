@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        val userName = intent.getStringExtra("userName") ?: "jakewharton"
+        val userName = intent.action ?: "jakewharton"
         viewModel
             .useCase
             .execute(userName)

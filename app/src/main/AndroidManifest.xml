@@ -20,6 +20,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="username" android:scheme="githubuserrepoapp" />
+            </intent-filter>
         </activity>
     </application>
 
